@@ -11,6 +11,20 @@
                         components
                             || getState()
        actionCreator--------Store----------Reducers
-4.                     
+4.  求合案例 redux精简版
+    - 去除组件中需要共享的状态数据 count
+    - 在 .src目录下建立： redux 文件夹，包含： count_reudcer.js 和 store.js 两个子文件
+    - store.js
+        1) 引入 redux中的 createStore 函数，创建一个store
+        2) .createStore调用时候引号传入一个为其服务的reducer
+        3) 记得暴露store对象
+    - count_reducer.js
+        1) reducer本质是一个函数，接收; preState,action 两个参数，返回加工后的转态
+        2) reducer 有两个作用: 初始化状态 加工状态
+        3) reducer 第一次被调用时候，是store自动触发的
+            传递的preState是 undefined, action 是{type:'@@REDUX/INIT_a.s.jd.6'}
+    - 在 index.js 中检测 store中的状态变化，一旦改变，重新渲染<App/>
+       备注: redux只负责管理状态，至于状态的改变驱动着页面的展示，要靠我们自己写
+
                             
           
