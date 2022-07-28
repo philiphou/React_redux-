@@ -1,8 +1,7 @@
 import {connect} from 'react-redux'
 import {createPlusAction,createMinusAction,createPlusAsyncAction} from '../../redux/actions/count'
 import React, { Component } from 'react'
-import { Button } from 'antd';
-import 'antd/dist/antd.css'
+
 
 
 //  定义UI组件
@@ -51,10 +50,10 @@ import 'antd/dist/antd.css'
             <option value="2">2</option>
             <option value="3">3</option>
         </select>&nbsp;
-        <Button type="primary" onClick={this.add}>plus</Button >&nbsp;
-        <Button type="primary" onClick={this.minus}>minus</Button >&nbsp;
-        <Button type="primary" onClick={this.plusIfOdd}>plusIfOdd</Button >&nbsp;
-        <Button type="primary" onClick={this.plusAsync}>plusAsync</Button >&nbsp;
+        <button  onClick={this.add}>plus</button >&nbsp;
+        <button  onClick={this.minus}>minus</button >&nbsp;
+        <button  onClick={this.plusIfOdd}>plusIfOdd</button >&nbsp;
+        <button  onClick={this.plusAsync}>plusAsync</button >&nbsp;
       </div>
     )
   }

@@ -76,3 +76,8 @@
     - 重点： Person 的reducer 和 Count的 reducer 需要使用 combineReducers进行合并
              合并后的总状态是一个对象！
     - 交给store的是总的reducers， 最后注意在组件中读取状态时候，记得“取到位”。
+    - 备注： reducers 必须是纯函数，不应使用一些数组上的api，比如 .push, .shift 等；因为 react 的 diff 算法，底层会浅比较，只比较数组的地址，不比较内容，
+             如果地址不变，就不更新；
+    - react_redux 开发者工具：加 extensions; 安装 npm i redux-devtools-extension; 在 src 的 store 中 引入 {composeWithDevTools} 放入 configStore()
+    - 纯函数特点：同样的输入，必须得到同样结果； 不得改写参数数据，不产生副作用，比如网络请求，不可调用Date.now() 或者 Math.random()等不纯的方法
+    
