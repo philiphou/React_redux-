@@ -2,46 +2,50 @@ import React, { Component } from 'react'
 import { Button } from 'antd';
 import 'antd/dist/antd.css'
 //  引入store,用于获取保存在store中的状态
-
+import store from '../../redux/store'
+//  引入 redux下的action creators 去创建actions 对象
+import {createPlusAction,createMinusAction,createPlusAsyncAction} from '../../redux/count_actions'
 
 export default class Count extends Component {
     state={car:'benzi'} // 只把需要共享的状态数据 count 交给redux管理，剩下的依然可以有转态，比如 car
     //  组件一挂载，就要检测store里的转态变化，如果变化就重新render, 因为redux 底层设计不会自动更新页面，
-
+    componentDidMount(){
+      store.subscribe(()=>{
+        // 此处调用 setState()传入一个空对象，这样react也会自动更新渲染component
+        this.setState({})
+      })
+    }
     add=()=>{
         const value = this.selectNumber.value
-        this.props.plus(value*1)
-
-     
+        store.dispatch(createPlusAction(value*1))
          
     }
     minus=()=>{
               const value = this.selectNumber.value
-              this.props.minus(value*1)
+              store.dispatch(createMinusAction(value*1))
          
          }
     plusIfOdd=()=>{
-         const value = this.selectNumber.value
-         if(this.props.count%2!==0){
-          this.props.plus(value*1)
-         }
-     
+        
+        const count = store.getState()
+        const value = this.selectNumber.value
+        if(count%2!==0){
+          store.dispatch(createPlusAction(value*1))
+        }
        
 
     }
     plusAsync=()=>{
      
         const value = this.selectNumber.value
-        this.props.plusAsync(value*1,1000)
     
-     
+      store.dispatch(createPlusAsyncAction(value*1,500))
      
     }
   render() {
-    console.log(this.props)
     return (
-       <div>
-        <h1>The current Sum is:{this.props.count}</h1>
+      <div>
+        <h1>The current Sum is:{store.getState()}</h1>
         <select ref={c=>this.selectNumber=c}>
             <option value="1">1</option>
             <option value="2">2</option>
