@@ -70,5 +70,9 @@
         -- 引入 connect函数，生成一个容器组件，并暴露： 
             connect(state=>{key:value},{key:xxxAction})(UI组件)
         -- 在UI组件中通过 this.props.xxxx读取和操作状态；
-                            
-          
+10. 组件之间数据共享案例：
+    - 定义一个person组件，和count组件通过redux共享数据
+    - 为person组件编写： reducer,action, 配置constant常量
+    - 重点： Person 的reducer 和 Count的 reducer 需要使用 combineReducers进行合并
+             合并后的总状态是一个对象！
+    - 交给store的是总的reducers， 最后注意在组件中读取状态时候，记得“取到位”。

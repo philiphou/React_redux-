@@ -7,7 +7,7 @@
 // function createMinusAction(data){
 //     return {type:'minus',data}
 // }
-import {PLUS,MINUS} from './constant'
+import {PLUS,MINUS} from '../constant'
 
 // 所谓同步action，就是指action的值是一般对象；
 export const createPlusAction=(data)=>({type:PLUS,data})

@@ -2,7 +2,7 @@
 - reducer 本质是一个函数，接收参数，然后处理事情，然后返回结果
 - reducer 函数会接收到两个参数，一个是之前的状态： preState，一个是 action 动作对象
 */
-import {PLUS,MINUS} from './constant'
+import {PLUS,MINUS} from '../constant'
    //  初始化时候
 const initState=0
 
