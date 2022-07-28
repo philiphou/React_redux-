@@ -59,6 +59,16 @@
 
 
     - 备注： 容器组件中的store是靠props传递进去的，而不是在容器组件中直接引入 
-9. 
+    - react-redux 的容器组件可以自动监听store里的状态变化从而重新渲染,就不用再手动 store.subscribe(()=>{}) 监听了
+9. 求和案例 react-redux 优化总结：
+    - 容器组件和UI组件混成一个文件
+    - 无需自己给容器组件传递store,给<App/> 包裹一个外壳组件 <Provider store={store}></Provider>
+    - 使用了 react-redux 就不用再自己监听redux中的状态改变，容器组件可以完成这个动作
+    - mapDispatchToProps 也可以写成一个对象
+    - 一个组件要和redux打交道，需要：
+        -- 定义好UI组件，但是不暴露
+        -- 引入 connect函数，生成一个容器组件，并暴露： 
+            connect(state=>{key:value},{key:xxxAction})(UI组件)
+        -- 在UI组件中通过 this.props.xxxx读取和操作状态；
                             
           
